@@ -19,7 +19,7 @@ class TreeSearch:
 		file_desc = open(file, 'r')
 		dom_list = []
 		for dom in file_desc:
-			dom_list.append(dom[:-1].split('.')[::-1])
+			dom_list.append(dom[:-1].split('.'))
 		file_desc.close()
 		self.__arr = recursion(dom_list)
 	def __del__(self):
