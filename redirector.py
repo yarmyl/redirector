@@ -79,9 +79,9 @@ def main():
 	namespace = parser.parse_args()
 	url = namespace.url if namespace.url else "http://127.0.0.1/"
 	redirect_url = "302:" + url
-	dom_file = get_script_dir() + 'dom.list'
-	url_file = get_script_dir() + 'url.list'
-	white_list_file = get_script_dir() + 'white_dom.list'
+	dom_file = get_script_dir() + '/dom.list'
+	url_file = get_script_dir() + '/url.list'
+	white_list_file = get_script_dir() + '/white_dom.list'
 	while 1:
 		hold_time = time.time()
 		d = TreeSearch(dom_file)
