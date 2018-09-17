@@ -1,0 +1,7 @@
+*.pyc
+*~
+__pycashe__
+*.list
+*#
+test_*
+*.conf
