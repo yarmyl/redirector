@@ -5,6 +5,8 @@ from sys import stdin
 import re
 import time
 import argparse
+import os
+import inspect
 
 """Парсим аргументы"""
 def createParser ():
@@ -77,9 +79,9 @@ def main():
 	namespace = parser.parse_args()
 	url = namespace.url if namespace.url else "http://127.0.0.1/"
 	redirect_url = "302:" + url
-	dom_file = 'dom.list'
-	url_file = 'url.list'
-	white_list_file = 'white_dom.list'
+	dom_file = get_script_dir() + 'dom.list'
+	url_file = get_script_dir() + 'url.list'
+	white_list_file = get_script_dir() + 'white_dom.list'
 	while 1:
 		hold_time = time.time()
 		d = TreeSearch(dom_file)
@@ -113,6 +115,12 @@ def main():
 					print(url)
 		del d
 		del w
-
+		
+def get_script_dir(follow_symlinks=True):
+	path = inspect.getabsfile(get_script_dir)
+	if follow_symlinks:
+		path = os.path.realpath(path)
+	return os.path.dirname(path)
+	
 if __name__ == "__main__":
 	main()
