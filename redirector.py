@@ -6,12 +6,13 @@ import re
 import time
 import argparse
 
-
+"""Парсим аргументы"""
 def createParser ():
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--url', nargs='?') #файл конфиги
+	parser.add_argument('--url', nargs='?') #url для редиректа
 	return parser
 
+"""Класс дерева поиска"""
 class TreeSearch:
 	__arr = []
 	def __init__(self, file):
@@ -39,6 +40,7 @@ class TreeSearch:
 				return 1
 		return 0
 
+"""Рекурсия для инициализации словаря"""
 def recursion(dom):
 	i = 0
 	res = {}
