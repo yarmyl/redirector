@@ -12,6 +12,7 @@ import inspect
 def createParser ():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--url', nargs='?') #url для редиректа
+	parser.add_argument('--t', nargs='?') # время перечитывания файлов конфиги
 	return parser
 
 """Класс дерева поиска"""
@@ -78,6 +79,7 @@ def main():
 	parser = createParser()
 	namespace = parser.parse_args()
 	url = namespace.url if namespace.url else "http://127.0.0.1/"
+	t = int(namespace.t) if namespace.t else 10
 	redirect_url = "302:" + url
 	dom_file = get_script_dir() + '/dom.list'
 	url_file = get_script_dir() + '/url.list'
@@ -91,7 +93,7 @@ def main():
 		for line in deny_http:
 			deny_list.append(line[0:-1])
 		deny_http.close()
-		while hold_time + 60 * 10 > time.time():
+		while hold_time + 60 * t > time.time():
 			try:
 				str = input()
 			except:
