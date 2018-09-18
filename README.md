@@ -17,11 +17,12 @@
 
 ### Ключи вызова:
 
---url - url для редиректа (у меня --url http://<какой-то домен>/?redirect=);
---t - время в минутах для переформирования словаря.
+* *--url* - url для редиректа (у меня --url http://<какой-то домен>/?redirect=);
+* *--t* - время в минутах для переформирования словаря.
 
 ## Пример внедрения в squid:
-
+```
 url_rewrite_access allow Safe_ports
 url_rewrite_program /home/redirector/redirector.py --url "http://<какой-то домен>/?redirect=" --t 10
 url_rewrite_children 50
+```
