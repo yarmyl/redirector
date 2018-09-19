@@ -41,6 +41,8 @@ class TreeSearch:
 					return 1
 			elif type(slov) == str:
 				return 1
+			else:
+				return 0
 		return 0
 
 """Рекурсия для инициализации словаря"""
